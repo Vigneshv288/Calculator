@@ -7,8 +7,12 @@ class Calculator {
 
     clear () {
         this.previousOperand = ''
-        this.currentOperand = ''
+        this.currentOperand = '0'
         this.operation = undefined
+    }
+
+    minusSign () {
+        this.currentOperand = ''
     }
 
     delete() {
@@ -28,7 +32,7 @@ class Calculator {
         this.operation = operation
         this.previousOperand = this.currentOperand
         this.currentOperand = ''
-    }
+    }  
 
     compute() {
         let computation
@@ -45,7 +49,7 @@ class Calculator {
             case '*':
                 computation = prev * current
                 break
-            case '÷':
+            case '/':
                 computation = prev / current
                 break
             case '^':
@@ -113,7 +117,7 @@ const delButton = document.querySelector('[data-delete]')
 const clearButton = document.querySelector('[data-allClear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
-
+const historyButton = document.querySelector('[data-history]')
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
 numberButtons.forEach(button => {
@@ -124,6 +128,7 @@ numberButtons.forEach(button => {
 })
 
 signButton.addEventListener('click', () => {
+        calculator.minusSign()
         calculator.appendNumber('-')
         calculator.updateDisplay()
     })
@@ -155,3 +160,5 @@ delButton.addEventListener('click', button => {
     calculator.delete()
     calculator.updateDisplay()
 })
+
+

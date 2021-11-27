@@ -3,6 +3,11 @@ body {
     font-family:cursive;
 }
 
+.allClear {
+    color: red;
+    font-weight: bold;
+}
+
 .calc-grid {
     display: grid;
     justify-content: center;
@@ -13,9 +18,12 @@ body {
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 330px) {
     .calc-grid {
         grid-template-columns:repeat(4, 70px); 
+        grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
 .calc-grid > button {
